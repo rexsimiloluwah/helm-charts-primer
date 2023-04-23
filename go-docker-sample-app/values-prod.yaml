@@ -1,0 +1,5 @@
+namespace: prod 
+
+configmap:
+  data:
+    ENV: production

@@ -1,0 +1,11 @@
+appName: go-sample-app
+namespace: default
+
+configmap:
+  name: go-sample-app-configmap-v0.1.0
+  data:
+    ENV: default
+
+image:
+  name: similoluwaokunowo/go-docker-sample-app
+  tag: latest 

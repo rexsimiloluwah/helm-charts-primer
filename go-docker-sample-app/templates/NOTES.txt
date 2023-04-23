@@ -1,0 +1,4 @@
+# # To view the application                                                                           
+  $ minikube tunnel                                                                                   
+3 $ kubectl port-forward service/{{ .Values.appName }} :5045 --namespace {{ .Values.namespace }}                                                                                             
+~                                                     

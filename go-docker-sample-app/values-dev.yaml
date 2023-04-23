@@ -1,0 +1,5 @@
+namespace: dev 
+
+configmap:
+  data:
+    ENV: development

@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName }}
+  namespace: {{ .Values.namespace  }}
+  labels:
+    app: {{ .Values.appName }}
+
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+    spec:
+      containers:
+        - name: go-sample-app-deployment
+          image: "{{ .Values.image.name  }}:{{ .Values.image.tag }}"
+          resources:
+            requests:
+              memory: "16Mi"
+              cpu: "50m"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+          ports:
+            - containerPort: 5045
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.configmap.name }}
